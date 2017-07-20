@@ -1,0 +1,18 @@
+{
+    "name": "keiko/oauth2-poc-client-app",
+    "authors": [
+        {
+            "name": "bourrely",
+            "email": "tbourrely@agenceinteractive.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.8",
+        "slim/twig-view": "^2.2"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "clientApp\\" : "src/"
+        }
+    }
+}

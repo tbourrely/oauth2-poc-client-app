@@ -1,0 +1,48 @@
+{%  extends "base.html.twig" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="h1">Oauth2 POC - Client Application</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding: 20px 0">
+
+                {% if not is_connected %}
+                    <h3>Ce site représente l'application cliente permettant d'utiliser les données de l'application "MyFacebook".</h3>
+                {% else %}
+                    <h3>La liste des utilisateurs a été récupérée grâce au 'access_token' reçu apres votre connexion à MyFacebook.</h3>
+                {% endif %}
+
+            </div>
+
+            {% if not is_connected %}
+                <a href="{{ path_for('API_login.get') }}" class="btn btn-info">Se connecter avec MyApp</a>
+            {% else %}
+
+                <div class="col-md-6">
+                    <a href="{{ path_for('API_logout.get') }}" class="btn btn-warning">Se déconnecter</a>
+                </div>
+
+                {% if users %}
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            {% for user in users %}
+                                <li class="list-group-item">{{ user.firstname }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}
